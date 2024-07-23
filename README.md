@@ -3,6 +3,7 @@
 [PickYourSeat] Este proyecto consiste en un sistema de reserva de espacios en un entorno de coworking. El frontend de la aplicación está diseñado para ser intuitivo, responsivo y fácil de usar, proporcionando a los usuarios una experiencia fluida desde cualquier dispositivo.
 
 ## Tecnologías Utilizadas
+- Versión de node 20.*
 - [React](https://es.react.dev/): Framework de JavaScript para construir interfaces de usuario.
 - [React Router DOM](https://reactrouter.com/en/main): Utilizado para manejar la navegación entre páginas dentro de la aplicación.
 <!-- - [React Query](https://tanstack.com/query/v3/): Biblioteca para manejar las peticiones y el estado del servidor en React. -->
