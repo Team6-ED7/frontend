@@ -1,6 +1,6 @@
 
 # Frontend
-[PickYourSeat] Este proyecto consiste en un sistema de reserva de espacios en un entorno de coworking. El frontend de la aplicación está diseñado para ser intuitivo, responsivo y fácil de usar, proporcionando a los usuarios una experiencia fluida desde cualquier dispositivo.
+**PickYourSeat** Este proyecto consiste en un sistema de reserva de espacios en un entorno de coworking. El frontend de la aplicación está diseñado para ser intuitivo, responsivo y fácil de usar, proporcionando a los usuarios una experiencia fluida desde cualquier dispositivo.
 
 ## Tecnologías Utilizadas
 - [React](https://es.react.dev/): Framework de JavaScript para construir interfaces de usuario.
@@ -46,8 +46,8 @@ Para configurar y ejecutar el proyecto de manera tradicional, sigue estos pasos:
    VITE_BUCKET_URL=<url del bucket para las imagenes> Ejemplo: https://aup-s3images.s3.eu-west-3.amazonaws.com
    VITE_WS_SERVICE=<url del servidor de websockets> Ejemplo: wss://websocket.adoptaunpeludo.com/
    VITE_ASSISTANT_SERVICE=<url del servicio de asistente> Ejemplo: https://www.adoptaunpeludo.com/assistant
-   ``` -->
-4.
+   ```
+4. -->
 4. **Ejecutar el proyecto:**
    ```bash
    npm run dev
