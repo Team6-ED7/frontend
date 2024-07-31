@@ -3,15 +3,19 @@ import { Button, Checkbox, Link } from '@nextui-org/react';
 import { IconLogin2 as LoginIcon } from '@tabler/icons-react';
 import H2title from '../../components/common/H2Title';
 import LogoPortrait from '../../components/common/LogoPortrait';
-import { checkBoxStyleConfig, inputStyleConfig } from '../../util/customStyles';
+import {
+  buttonStyleConfig,
+  checkBoxStyleConfig,
+  inputStyleConfig,
+} from '../../util/customStyles';
 import { Line } from './components/Line';
 
 const Register = () => {
   return (
-    <main className="bg-[url('/src/assets/background.svg')] max-h-screen flex flex-col h-screen w-screen ">
-      <section className="w-7xl px-5 pt-10 gap-5  flex flex-col justify-center ">
+    <main className="bg-[url('/src/assets/background.svg')] max-h-screen flex flex-col h-screen w-screen items-center justify-center">
+      <section className="w-7xl px-10  py-10 flex flex-col items-center gap-10">
         <LogoPortrait />
-        <section className="max-w-4xl p-5 rounded-md bg-black bg-opacity-10 flex flex-col gap-5">
+        <section className="max-w-4xl p-10 rounded-md bg-black bg-opacity-10 flex flex-col gap-5">
           <header className=" flex justify-center">
             <H2title>Regístrate</H2title>
           </header>
@@ -83,7 +87,7 @@ const Register = () => {
                   variant="solid"
                   size="lg"
                   endContent={<LoginIcon />}
-                  className="px-10 font-poppins text-foreground"
+                  className={buttonStyleConfig}
                 >
                   Regístrate
                 </Button>
@@ -92,7 +96,7 @@ const Register = () => {
           </main>
           <footer className="flex justify-center gap-1 font-medium font-poppins text-foreground items-baseline">
             <span>¿Ya tienes una cuenta?</span>
-            <Link to="/login" className="text-tertiary">
+            <Link to="/login" className="text-tertiary cursor-pointer ">
               Inicia sesión
             </Link>
           </footer>
