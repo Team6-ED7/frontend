@@ -21,4 +21,4 @@ jobs:
         with:
           branch: gh-pages
           folder: dist
-          GITHUB_TOKEN: ${{ secrets.GP }}
+          token: ${{ secrets.GP }}
