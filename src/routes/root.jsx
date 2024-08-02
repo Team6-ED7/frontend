@@ -1,32 +1,36 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from 'react-router-dom';
 import App from '../App.jsx';
-import ErrorPage from "../pages/error-page.jsx";
-import Login from "../pages/login.jsx";
-import Layout from "../layouts/Layout.jsx";
-import Home from "../pages/Home.jsx";
+import Layout from '../layouts/Layout.jsx';
+import ErrorPage from '../pages/error-page.jsx';
+import Home from '../pages/Home.jsx';
+import Login from '../pages/login.jsx';
+import Register from '../pages/Register/Register.jsx';
 
 export const router = createBrowserRouter([
   //public routes
   {
-    path: "/",
+    path: '/',
     element: <App />,
     errorElement: <ErrorPage />,
   },
   {
-    path: "/login",
+    path: '/login',
     element: <Login />,
+  },
+  {
+    path: '/register',
+    element: <Register />,
   },
 
   //private routes
   {
-    path: "/app",
+    path: '/app',
     element: <Layout />,
     children: [
       {
-        path: "home",
-        element: <Home />
-      }
-    ]
-  }
-
+        path: 'home',
+        element: <Home />,
+      },
+    ],
+  },
 ]);
