@@ -1,6 +1,7 @@
 import { Input } from '@nextui-org/input';
-import { Button, Checkbox, Link } from '@nextui-org/react';
+import { Button, Checkbox } from '@nextui-org/react';
 import { IconLogin2 as LoginIcon } from '@tabler/icons-react';
+import { Link } from 'react-router-dom';
 import H2title from '../../components/common/H2Title';
 import LogoPortrait from '../../components/common/LogoPortrait';
 import {
