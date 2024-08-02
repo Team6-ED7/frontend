@@ -1,10 +1,16 @@
-import './App.css';
-function App() {
+import { Link } from 'react-router-dom';
 
+// import './App.css';
+function App() {
   return (
-    <div>
-      <h1>PickYourSeat</h1>
-    </div>
+    //  for testing purposes only
+    <main className="w-screen h-screen flex justify-center items-center">
+      <div className="mx-auto my-auto">
+        <Link to="/register" className="text-tertiary cursor-pointer ">
+          Register
+        </Link>
+      </div>
+    </main>
   );
 }
 
