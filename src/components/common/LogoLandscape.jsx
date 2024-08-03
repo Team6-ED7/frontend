@@ -2,7 +2,7 @@ export const LogoLandscape = ({ size = 285, className }) => {
   return (
     <svg
       width={size}
-      height="auto"
+      height="46"
       viewBox="0 0 285 46"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

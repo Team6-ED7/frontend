@@ -1,10 +1,10 @@
 
-import { useState } from "react"
 import { Outlet, Navigate } from "react-router-dom"
 import Dashboard from "../pages/Dashboard"
+import { useAuth } from "../hooks/useAuth"
 export const ProtectedRoute = () => {
-  const [isAuth] = useState(true)
-  return isAuth ?
+  const { isAuthenticated } = useAuth()
+  return isAuthenticated ?
     (<Dashboard>
       <Outlet />
     </Dashboard>)
