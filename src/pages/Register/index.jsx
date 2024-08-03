@@ -10,8 +10,19 @@ import { Line } from './components/Line';
 import SessionHeader from '../../components/session/SessionHeader';
 import SessionFooter from '../../components/session/SessionFooter';
 import { SessionLayout } from '../../layouts/SessionLayout';
+import { useAuth } from '../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const Register = () => {
+  const { isAuthenticated } = useAuth()
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/home')
+    }
+
+  }, [isAuthenticated, navigate])
   return (
     <SessionLayout>
       <SessionHeader title="Registrate" />
