@@ -1,9 +1,11 @@
-import './App.css';
-function App() {
+import Layout from './layouts/Layout';
 
+function App() {
   return (
-    <div>
-      <h1>PickYourSeat</h1>
+    //  for testing purposes only
+
+    <div className="mx-auto my-auto">
+      <Layout />
     </div>
   );
 }

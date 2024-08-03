@@ -6,6 +6,7 @@
 - Versión de node 20.*
 - [React](https://es.react.dev/): Framework de JavaScript para construir interfaces de usuario.
 - [React Router DOM](https://reactrouter.com/en/main): Utilizado para manejar la navegación entre páginas dentro de la aplicación.
+- [Tabler icons](https://tabler.io/icons): Librería de iconos utilizada eb formularios y botones.
 <!-- - [React Query](https://tanstack.com/query/v3/): Biblioteca para manejar las peticiones y el estado del servidor en React. -->
 - [Next UI](https://nextui.org/): Biblioteca de componentes UI para React que permite un desarrollo más rápido y eficiente basada en Tailwind.
 - [Tailwind CSS](https://tailwindcss.com/): Framework de CSS para estilizar la aplicación sin salir del HTML.
