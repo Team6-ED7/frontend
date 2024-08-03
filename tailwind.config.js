@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const { nextui } = require('@nextui-org/react');
+
 export default {
   content: [
     './index.html',
@@ -107,6 +108,9 @@ export default {
         300: '118rem' /*1888*/,
         304: '120rem' /*1920*/,
       },
+      backgroundImage: {
+        'pattern': "url('src/assets/background.svg')",
+      }
     },
   },
   darkMode: 'class',

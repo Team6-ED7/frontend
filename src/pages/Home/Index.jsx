@@ -1,6 +1,6 @@
 import { Button } from '@nextui-org/react';
+import { Link } from "react-router-dom"
 import { IconLogin2 as LoginIcon } from '@tabler/icons-react';
-import { Link } from 'react-router-dom';
 import H3title from '../../components/common/H3Title';
 import LogoPortrait from '../../components/common/LogoPortrait';
 import { buttonStyleConfig } from '../../util/customStyles';
@@ -24,17 +24,17 @@ const Home = () => {
           <p>¡Reserva ahora y empieza a trabajar!</p>
         </main>
         <footer className=" flex justify-center">
-          <Link to="register">
-            <Button
-              color="primary"
-              variant="solid"
-              size="lg"
-              endContent={<LoginIcon />}
-              className={buttonStyleConfig}
-            >
-              Login / Register
-            </Button>
-          </Link>
+          <Button
+            as={Link}
+            to={"login"}
+            color="primary"
+            variant="solid"
+            size="lg"
+            endContent={<LoginIcon />}
+            className={buttonStyleConfig}
+          >
+            Iniciar Sesión
+          </Button>
         </footer>
       </section>
     </main>
