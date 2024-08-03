@@ -1,6 +1,7 @@
 import { Input } from '@nextui-org/input';
-import { Button, Checkbox, Link } from '@nextui-org/react';
+import { Button, Checkbox } from '@nextui-org/react';
 import { IconLogin2 as LoginIcon } from '@tabler/icons-react';
+import { Link } from 'react-router-dom';
 import H2title from '../../components/common/H2Title';
 import LogoPortrait from '../../components/common/LogoPortrait';
 import {
@@ -12,7 +13,7 @@ import { Line } from './components/Line';
 
 const Register = () => {
   return (
-    <main className="bg-[url('/src/assets/background.svg')] max-h-screen flex flex-col h-screen w-screen items-center justify-center">
+    <main className="bg-[url('/src/assets/background.svg')] flex flex-col w-screen items-center justify-center">
       <section className="w-7xl px-10  py-10 flex flex-col items-center gap-10">
         <LogoPortrait />
         <section className="max-w-4xl p-10 rounded-md bg-black bg-opacity-10 flex flex-col gap-5">
