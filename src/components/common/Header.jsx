@@ -3,7 +3,7 @@ import LogoLandscape from './LogoLandscape';
 
 export const Header = () => {
   return (
-    <div className="px-5 py-5">
+    <div className="px-5 py-3">
       <Link to="/">
         <LogoLandscape />
       </Link>

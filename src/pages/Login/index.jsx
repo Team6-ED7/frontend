@@ -1,5 +1,3 @@
-import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 import { Button, Link } from '@nextui-org/react';
 import { Input } from '@nextui-org/input';
 import { IconLogin2 as LoginIcon } from '@tabler/icons-react';
@@ -7,18 +5,8 @@ import { buttonStyleConfig, inputStyleConfig } from '../../util/customStyles';
 import { SessionLayout } from '../../layouts/SessionLayout';
 import SessionFooter from '../../components/session/SessionFooter';
 import SessionHeader from '../../components/session/SessionHeader';
-import { useAuth } from '../../hooks/useAuth';
 
 const Login = () => {
-  const { isAuthenticated } = useAuth()
-  const navigate = useNavigate()
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate('/home')
-    }
-
-  }, [isAuthenticated, navigate])
-
 
   return (
     <SessionLayout>

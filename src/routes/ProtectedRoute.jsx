@@ -1,13 +1,15 @@
 
 import { Outlet, Navigate } from "react-router-dom"
-import Dashboard from "../pages/Dashboard"
 import { useAuth } from "../hooks/useAuth"
+import Dashboard from "../pages/Dashboard"
 export const ProtectedRoute = () => {
-  const { isAuthenticated } = useAuth()
-  return isAuthenticated ?
-    (<Dashboard>
+  const auth = useAuth()
+  return auth.isAuthenticated ?
+
+    <Dashboard>
       <Outlet />
-    </Dashboard>)
+    </Dashboard>
+
     : <Navigate to="/login" />
 
 

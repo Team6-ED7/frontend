@@ -36,10 +36,16 @@ export const router = createBrowserRouter([
     element: <ProtectedRoute />,
     children: [
       {
-        index: true,
         path: '/Home',
         element: <Spaces />,
+        children: [
+          {
+            path: 'spaces',
+            element: <Spaces />,
+          },
+        ],
       },
+
     ]
 
   },
