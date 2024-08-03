@@ -26,14 +26,14 @@ const Home = () => {
         <footer className=" flex justify-center">
           <Button
             as={Link}
-            to={"register"}
+            to={"login"}
             color="primary"
             variant="solid"
             size="lg"
             endContent={<LoginIcon />}
             className={buttonStyleConfig}
           >
-            Login / Register
+            Iniciar Sesión
           </Button>
         </footer>
       </section>
