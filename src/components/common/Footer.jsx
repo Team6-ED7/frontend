@@ -1,8 +1,5 @@
-
 const Footer = () => {
-  return (
-    <div>Footer</div>
-  )
-}
+  return <div className="bg-secondary w-screen h-5"></div>;
+};
 
-export default Footer
+export default Footer;
