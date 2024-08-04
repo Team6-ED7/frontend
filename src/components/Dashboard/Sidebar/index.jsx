@@ -1,12 +1,17 @@
 import { useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import Header from '../../common/Header';
+import { Button } from '@nextui-org/react';
+import { buttonStyleConfig } from '../../../util/customStyles';
+import { IconLogin2 } from '@tabler/icons-react';
 
-
+import { useAuth } from '../../../hooks/useAuth';
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const location = useLocation();
   const { pathname } = location;
+  const { setIsAuthenticated } = useAuth()
+
 
   const trigger = useRef(null);
   const sidebar = useRef(null)
@@ -95,8 +100,25 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               Home
             </NavLink>
           </li>
+          <li>
+            <Button
+              type="button"
+              color="primary"
+              variant="solid"
+              size="lg"
+              endContent={<IconLogin2 />}
+              className={buttonStyleConfig}
+              onClick={() => {
+                localStorage.removeItem("token")
+                setIsAuthenticated(false)
+              }}
+            >
+              Cerrar Sesion
+            </Button>
 
+          </li>
         </ul>
+
       </nav>
     </aside>
   );

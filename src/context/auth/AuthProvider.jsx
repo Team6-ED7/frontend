@@ -6,8 +6,9 @@ export const AuthContext = createContext({
 });
 
 export const AuthProvider = ({ children }) => {
+  const isauth = localStorage.getItem("token") ? true : false
+  const [isAuthenticated, setIsAuthenticated] = useState(isauth)
 
-  const [isAuthenticated, setIsAuthenticated] = useState(true)
   return <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
     {children}
   </AuthContext.Provider>
