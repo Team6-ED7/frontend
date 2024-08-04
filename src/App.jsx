@@ -1,10 +1,11 @@
 import './App.css';
+import Navegation from './components/common/Navegation';
 function App() {
 
   return (
-    <div>
-      <h1>PickYourSeat</h1>
-    </div>
+    <>
+    <Navegation/>
+    </>
   );
 }
 
