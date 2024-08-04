@@ -7,12 +7,15 @@ import {
 } from "react-router-dom";
 import { router } from './routes/root';
 import { AuthProvider } from './context/auth/AuthProvider';
+import { Toaster } from 'sonner';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
       <NextUIProvider>
+        <Toaster richColors position='top-right' className='p-2' />
+
         <RouterProvider router={router} />
       </NextUIProvider>
     </AuthProvider>
