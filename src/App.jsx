@@ -1,11 +1,12 @@
-import './App.css';
-import Navegation from './components/common/Navegation';
-function App() {
+import Layout from './layouts/Layout';
 
+function App() {
   return (
-    <>
-    <Navegation/>
-    </>
+    //  for testing purposes only
+
+    <div className="mx-auto my-auto">
+      <Layout />
+    </div>
   );
 }
 

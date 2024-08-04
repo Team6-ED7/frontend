@@ -1,11 +1,13 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
+import LogoLandscape from './LogoLandscape';
 
 const Header = () => {
   return (
-    <div>
-      <h2>Hi,there</h2>
+    <div className="px-5 py-5">
+      <Link to="/">
+        <LogoLandscape />
+      </Link>
     </div>
   );
 };
-
 export default Header;
