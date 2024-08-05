@@ -54,7 +54,7 @@ const Register = () => {
     try {
       const { data } = await axios.post(apis.auth.register, {
         "name": state.name,
-        "lastname": state.lastname,
+        "lastName": state.lastname,
         "email": state.email,
         "password": state.password
       });
