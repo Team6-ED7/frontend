@@ -6,6 +6,7 @@ import LogoPortrait from '../../components/common/LogoPortrait';
 import { buttonStyleConfig } from '../../util/customStyles';
 
 const Home = () => {
+
   return (
     <main className="bg-[url('/src/assets/background-home.jpg')] bg-bottom bg-no-repeat bg-cover max-h-screen flex flex-col w-screen items-center justify-center ">
       <section className="max-w-4xl px-10  py-10 flex flex-col items-center gap-10 rounded-md bg-white bg-opacity-90">
