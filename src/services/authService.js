@@ -1,5 +1,3 @@
-import { postData } from '../../api/client';
-
 export const register = async (credentials) => {
   try {
     const { data } = await postData('/auth/register', credentials);
