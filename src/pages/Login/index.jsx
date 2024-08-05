@@ -45,17 +45,21 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const data = await axios.post(apis.auth.login, state);
-      if (data.token) {
-        toast.success('Bienvenido')
+      const { data } = await axios.post(apis.auth.login, state);
+
+      if (data) {
+        toast.success(`Bienvenido ${data.name}`)
         setIsAuthenticated(true)
         localStorage.setItem("token", data.token);
+        localStorage.setItem("user", data.name);
         navigate("/home")
       }
     } catch (error) {
+      if (error.response.data) {
+        toast.error("Credenciales incorrectas")
+        return
+      }
       toast.error(' Error en el inicio de sesión')
-
-      console.error(error);
 
     }
   }

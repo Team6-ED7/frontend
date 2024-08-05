@@ -52,22 +52,27 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const data = await axios.post(apis.auth.register, {
+      const { data } = await axios.post(apis.auth.register, {
         "name": state.name,
         "lastname": state.lastname,
         "email": state.email,
         "password": state.password
       });
 
+
       if (data) {
 
-        toast.success('Usuario creado con exito')
+        toast.success('Usuario creado con exito' + ' ' + data.name)
         navigate("/login")
       }
 
     } catch (error) {
+      if (error.response.data) {
+
+        toast.error(error.response.data.message)
+        return
+      }
       toast.error('Error en el registro')
-      console.log(error);
     }
   }
 
@@ -104,7 +109,7 @@ const Register = () => {
             <Input
               type="email"
               label="Email"
-              placeholder="Enter your email"
+              placeholder=" Ingrese su email"
               classNames={inputStyleConfig}
               isRequired
               name='email'
@@ -115,7 +120,7 @@ const Register = () => {
             <Input
               type="email"
               label="Confirmar email"
-              placeholder="Enter your email"
+              placeholder=" Confirme su email"
               classNames={inputStyleConfig}
               isRequired
               name='repeatEmail'
@@ -123,21 +128,24 @@ const Register = () => {
             />
             <Input
               type="password"
-              label="Password"
-              placeholder="Enter your password"
+              label="Contraseña"
+              placeholder="Ingrese su contraseña"
               classNames={inputStyleConfig}
               isRequired
               name='password'
               autoComplete='off'
+              onChange={handleChange}
             />
             <Input
               type="password"
-              label="Confirmar password"
-              placeholder="Enter your password"
+              label="Confirmar contraseña"
+              placeholder="Confirme su contraseña "
               classNames={inputStyleConfig}
               isRequired
               name='repeatPassword'
               autoComplete='off'
+              onChange={handleChange}
+
 
             />
           </div>
