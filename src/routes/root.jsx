@@ -1,11 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../layouts/Layout';
+import { Spaces } from '../pages/Dashboard/Spaces';
 import ErrorPage from '../pages/error-page';
 import Home from '../pages/Home';
-import Register from '../pages/Register';
 import Login from '../pages/Login';
+import Register from '../pages/Register';
 import { ProtectedRoute } from './ProtectedRoute';
-import { Spaces } from '../pages/Dashboard/Spaces';
 export const router = createBrowserRouter([
   //public routes
 
@@ -17,7 +17,8 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
-      }, {
+      },
+      {
         path: 'login',
         element: <Login />,
       },
@@ -32,11 +33,10 @@ export const router = createBrowserRouter([
 
   //protected routes
   {
-    path: '/',
+    path: 'private',
     element: <ProtectedRoute />,
     children: [
       {
-        path: '/Home',
         element: <Spaces />,
         children: [
           {
@@ -45,8 +45,6 @@ export const router = createBrowserRouter([
           },
         ],
       },
-
-    ]
-
+    ],
   },
 ]);
