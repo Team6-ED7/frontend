@@ -10,7 +10,7 @@ export const ProtectedRoute = () => {
       <Outlet />
     </Dashboard>
 
-    : <Navigate to="/login" />
+    : <Navigate to="/login" replace />
 
 
 }
