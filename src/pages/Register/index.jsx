@@ -1,35 +1,32 @@
 import { Input } from '@nextui-org/input';
 import { Button, Checkbox } from '@nextui-org/react';
 import { IconLogin2 as LoginIcon } from '@tabler/icons-react';
+import axios from 'axios';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
+import { apis } from '../../api/apis';
+import SessionFooter from '../../components/session/SessionFooter';
+import SessionHeader from '../../components/session/SessionHeader';
+import { SessionLayout } from '../../layouts/SessionLayout';
 import {
   buttonStyleConfig,
   checkBoxStyleConfig,
   inputStyleConfig,
 } from '../../util/customStyles';
 import { Line } from './components/Line';
-import SessionHeader from '../../components/session/SessionHeader';
-import SessionFooter from '../../components/session/SessionFooter';
-import { SessionLayout } from '../../layouts/SessionLayout';
-import { useState } from 'react';
-import axios from 'axios';
-import { toast } from 'sonner';
-import { useNavigate } from 'react-router-dom';
-import { apis } from '../../api/apis';
-
 
 const Register = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [isChecked, setIsChecked] = useState(false);
-  const [isErrorValidEmail, setIsErrorValidEmail] = useState(false)
+  const [isErrorValidEmail, setIsErrorValidEmail] = useState(false);
   const isErrorEmail = (email) => {
-    return setIsErrorValidEmail(!isEmailValid(email))
-  }
+    return setIsErrorValidEmail(!isEmailValid(email));
+  };
   const isEmailValid = (email) => {
-    return /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(email)
-
-  }
-
+    return /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(email);
+  };
 
   const [state, setState] = useState({
     name: '',
@@ -38,67 +35,61 @@ const Register = () => {
     repeatEmail: '',
     password: '',
     repeatPassword: '',
-
-  })
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setState({
       ...state,
-      [name]: value
+      [name]: value,
     });
-  }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const { data } = await axios.post(apis.auth.register, {
-        "name": state.name,
-        "lastName": state.lastname,
-        "email": state.email,
-        "password": state.password
+        name: state.name,
+        lastName: state.lastname,
+        email: state.email,
+        password: state.password,
       });
 
-
       if (data) {
-
-        toast.success('Usuario creado con exito' + ' ' + data.name)
-        navigate("/login")
+        toast.success('Usuario creado con éxito' + ' ' + data.name);
+        navigate('/login');
       }
-
     } catch (error) {
       if (error.response.data) {
-
-        toast.error(error.response.data.message)
-        return
+        toast.error(error.response.data.message);
+        return;
       }
-      toast.error('Error en el registro')
+      toast.error('Error en el registro');
     }
-  }
+  };
 
   return (
     <SessionLayout>
-      <SessionHeader title="Registrate" />
+      <SessionHeader title="Regístrate" />
       <main>
         <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-
           <div className="flex justify-between w-full gap-5">
             <Input
               type="text"
               label="Nombre"
-              placeholder="Enter your name"
+              placeholder="Como mínimo 2 caracteres... "
               classNames={inputStyleConfig}
               isRequired
-              name='name'
+              name="name"
               onChange={handleChange}
             />
             <Input
               type="text"
               label="Apellido"
-              placeholder="Enter your Lastname"
+              placeholder="Como mínimo 2 caracteres..."
               classNames={inputStyleConfig}
               isRequired
-              name='lastname'
+              name="lastname"
               onChange={handleChange}
             />
           </div>
@@ -109,52 +100,53 @@ const Register = () => {
             <Input
               type="email"
               label="Email"
-              placeholder=" Ingrese su email"
+              placeholder="miemail@email.com"
               classNames={inputStyleConfig}
               isRequired
-              name='email'
+              name="email"
               onChange={handleChange}
               onBlur={() => isErrorEmail(state.email)}
-
             />
             <Input
               type="email"
               label="Confirmar email"
-              placeholder=" Confirme su email"
+              placeholder="miemail@email.com"
               classNames={inputStyleConfig}
               isRequired
-              name='repeatEmail'
+              name="repeatEmail"
               onChange={handleChange}
             />
             <Input
               type="password"
               label="Contraseña"
-              placeholder="Ingrese su contraseña"
+              placeholder="Como mínimo 8 caracteres..."
               classNames={inputStyleConfig}
               isRequired
-              name='password'
-              autoComplete='off'
+              name="password"
+              autoComplete="off"
               onChange={handleChange}
             />
             <Input
               type="password"
               label="Confirmar contraseña"
-              placeholder="Confirme su contraseña "
+              placeholder="Como mínimo 8 caracteres..."
               classNames={inputStyleConfig}
               isRequired
-              name='repeatPassword'
-              autoComplete='off'
+              name="repeatPassword"
+              autoComplete="off"
               onChange={handleChange}
-
-
             />
           </div>
           <div className="flex flex-col justify-center pl-24">
-            <Checkbox isRequired classNames={checkBoxStyleConfig}  >
+            <Checkbox isRequired classNames={checkBoxStyleConfig}>
               Acepto recibir otras comunicaciones de PickYourSeat
               <span className="text-secondary">*</span>
             </Checkbox>
-            <Checkbox classNames={checkBoxStyleConfig} isRequired onClick={() => setIsChecked(!isChecked)}>
+            <Checkbox
+              classNames={checkBoxStyleConfig}
+              isRequired
+              onClick={() => setIsChecked(!isChecked)}
+            >
               Autorizo a PickYourSeat a almacenar y procesar mis datos
               personales<span className="text-secondary">*</span>
             </Checkbox>
@@ -166,7 +158,9 @@ const Register = () => {
               variant="solid"
               size="lg"
               endContent={<LoginIcon />}
-              className={`${buttonStyleConfig} ${!isChecked ? ' opacity-50 pointer-events-none' : ''}`}
+              className={`${buttonStyleConfig} ${
+                !isChecked ? ' opacity-50 pointer-events-none' : ''
+              }`}
               disabled={!isChecked || isErrorValidEmail}
             >
               Regístrate
@@ -174,9 +168,12 @@ const Register = () => {
           </div>
         </form>
       </main>
-      <SessionFooter message="¿Ya tienes una cuenta?" link="/login" linkText="Inicia Sesión" />
+      <SessionFooter
+        message="¿Ya tienes una cuenta?"
+        link="/login"
+        linkText="Inicia sesión"
+      />
     </SessionLayout>
-
   );
 };
 export default Register;
