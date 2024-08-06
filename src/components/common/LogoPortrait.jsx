@@ -1,8 +1,8 @@
-export const LogoPortrait = ({ size = 420 }) => {
+export const LogoPortrait = ({ size = 420, height = 131}) => {
   return (
     <svg
       width={size}
-      height="131"
+      height = {height}
       viewBox="0 0 420 131"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +65,7 @@ export const LogoPortrait = ({ size = 420 }) => {
         <clipPath id="clip0_2_10235">
           <rect
             width="328"
-            height="124"
+            height="131"
             fill="white"
             transform="translate(46)"
           />

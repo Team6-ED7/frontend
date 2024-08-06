@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import LogoLandscape from './LogoLandscape';
+import Navegation from './Navegation';
 
 const Header = () => {
   return (
@@ -7,6 +8,7 @@ const Header = () => {
       <Link to="/">
         <LogoLandscape />
       </Link>
+      <Navegation />
     </div>
   );
 };
