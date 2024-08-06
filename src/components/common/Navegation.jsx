@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import {useState } from 'react';
 import { HiMenu } from "react-icons/hi";
 import LogoPortrait from '../../components/common/LogoPortrait';
-import { Button, link } from '@nextui-org/react';
+import { Button} from '@nextui-org/react';
 import { buttonStyleConfig } from '../../util/customStyles';
 import { Link } from 'react-router-dom';
 
@@ -11,22 +11,16 @@ import { Link } from 'react-router-dom';
 const Navegation = () => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isSticky, SetIsSticky] = useState(false);
+   
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if(window.scrollY > 0){
-                SetIsSticky(true);
-            }
-        };
+    
 
-        window.addEventListener("scroll", handleScroll)
-    }, [])
+   
     return ( 
         <header className='w-full fixed top-0 left-0 right-0'>
             <nav className='py-4 md:px-8 px-4 bg-white ${isSticky ? "sticky top-0 right-0 left-0 bg-white" : "" } '>
