@@ -7,7 +7,7 @@ export const inputStyleConfig = {
 export const selectStyleConfig = { trigger: 'border-1 border-primary' };
 
 export const buttonStyleConfig =
-  ' font-bold font-rajdhani text-foreground text-xl';
+  ' font-bold font-rajdhani text-foreground text-xl pointer';
 
 export const radioGroupStyleConfig = {
   label: 'mx-auto',
