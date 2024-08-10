@@ -4,30 +4,25 @@ import LogoPortrait from '../../components/common/LogoPortrait';
 import { Button} from '@nextui-org/react';
 import { buttonStyleConfig } from '../../util/customStyles';
 import { Link } from 'react-router-dom';
-
+import Home from '../../pages/Home';
 
 
 
 const Navegation = () => {
-
     const [isMenuOpen, setIsMenuOpen] = useState(false);
    
-
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
 
-    
-
-   
     return ( 
         <header className='w-full fixed top-0 left-0 right-0'>
             <nav className='py-4 md:px-8 px-4 bg-white ${isSticky ? "sticky top-0 right-0 left-0 bg-white" : "" } '>
                 <div className='flex items-center justify-between '>
-                    <div className='cursor-pointer flex items-center'>
+                    <Link to={"/"} className='cursor-pointer flex items-center'>
                         < LogoPortrait height={60}/>
-                    </div>
+                    </Link>
 
                     {/*para dispositivos mas grandes*/}
 
@@ -39,7 +34,7 @@ const Navegation = () => {
                     </div>
                     {/*Boton de uneteya!*/}
                     <div className='lg:block hidden'>
-                        <Button color='primary' variant='solid' size='lg' className={buttonStyleConfig} as={Link} to={"login"}>Agenda tu espacio</Button>
+                        <Button color='primary' variant='solid' size='lg' className={buttonStyleConfig} as={Link} to={"Login"}>Agenda tu espacio</Button>
                     </div>
 
                     {/*boton del menu para dispositivos pequenos*/}
