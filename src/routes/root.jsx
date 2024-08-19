@@ -6,6 +6,8 @@ import Register from '../pages/Register';
 import Login from '../pages/Login';
 import { ProtectedRoute } from './ProtectedRoute';
 import { Spaces } from '../pages/Dashboard/Spaces';
+import MySpace from '../pages/Dashboard/MySpace';
+import FloorTwo from '../pages/Dashboard/FloorTwo';
 export const router = createBrowserRouter([
   //public routes
 
@@ -38,13 +40,16 @@ export const router = createBrowserRouter([
       {
         path: '/Home',
         element: <Spaces />,
-        children: [
-          {
-            path: 'spaces',
-            element: <Spaces />,
-          },
-        ],
+
       },
+      {
+        path: 'my-space',
+        element: <MySpace />,
+      },
+      {
+        path: 'floor-two',
+        element: <FloorTwo />,
+      }
 
     ]
 
