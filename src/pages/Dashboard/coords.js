@@ -1,4 +1,4 @@
-export const coords = [
+export const coordsFloorOne = [
   {
     "id": "PDT-1",
     "title": "PDT-1",
@@ -193,5 +193,6 @@ export const coords = [
       [605, 442]
     ],
     "preFillColor": "rgba(239, 83, 80, 0.34)",
+    "disabled": true
   }
 ]

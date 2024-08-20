@@ -5,9 +5,10 @@ import Home from '../pages/Home';
 import Register from '../pages/Register';
 import Login from '../pages/Login';
 import { ProtectedRoute } from './ProtectedRoute';
-import { Spaces } from '../pages/Dashboard/Spaces';
-import MySpace from '../pages/Dashboard/MySpace';
-import FloorTwo from '../pages/Dashboard/FloorTwo';
+import { FloorOne } from '../pages/Dashboard/views/FloorOne';
+import FloorTwo from '../pages/Dashboard/views/FloorTwo';
+import MySpace from '../pages/Dashboard/views/MySpace';
+
 export const router = createBrowserRouter([
   //public routes
 
@@ -38,13 +39,13 @@ export const router = createBrowserRouter([
     element: <ProtectedRoute />,
     children: [
       {
-        path: '/Home',
-        element: <Spaces />,
-
-      },
-      {
         path: 'my-space',
         element: <MySpace />,
+      },
+      {
+        path: 'floor-one',
+        element: <FloorOne />,
+
       },
       {
         path: 'floor-two',

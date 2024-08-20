@@ -52,7 +52,7 @@ const Login = () => {
         setIsAuthenticated(true)
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", data.name);
-        navigate("/home")
+        navigate("/floor-one")
       }
     } catch (error) {
       if (error.response.data) {
