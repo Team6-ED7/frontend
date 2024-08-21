@@ -48,10 +48,9 @@ const Login = () => {
       const { data } = await axios.post(apis.auth.login, state);
 
       if (data) {
-        toast.success(`Bienvenido ${data.name}`)
+        toast.success(`Bienvenido`)
         setIsAuthenticated(true)
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("user", data.name);
+        localStorage.setItem("token", data);
         navigate("/floor-one")
       }
     } catch (error) {

@@ -14,7 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
       <NextUIProvider>
-        <Toaster richColors position='top-right' className='p-2' />
+        <Toaster richColors position='top-right' className='p-2' expand />
 
         <RouterProvider router={router} />
       </NextUIProvider>

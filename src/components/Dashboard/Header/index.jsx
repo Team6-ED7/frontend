@@ -1,12 +1,9 @@
 import { Link } from "react-router-dom";
 import LogoLandscape from "../../common/LogoLandscape";
-import { useState } from "react";
-import { Button } from "@nextui-org/react";
-import { IconLogin2 } from "@tabler/icons-react";
 import { useAuth } from "../../../hooks/useAuth";
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, Divider } from "@nextui-org/react";
 
 const HeaderDashboard = ({ sidebarOpen, setSidebarOpen }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { setIsAuthenticated } = useAuth()
 
   return (
@@ -24,52 +21,30 @@ const HeaderDashboard = ({ sidebarOpen, setSidebarOpen }) => {
               <LogoLandscape size={200} />
             </Link>
           </div>
-          <div className="flex items-center">
-            <div className="relative flex items-center ms-3">
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                type="button"
-                className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                aria-expanded="false"
-                data-dropdown-toggle="dropdown-user"
-              >
-                <span className="sr-only">Abrir menu</span>
-                <img className="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo" />
-              </button>
-              <div
-                className={`p-2 absolute right-0 top-3 mt-6 z-50 text-base list-none bg-white divide-y divide-gray-100 rounded shadow w-48 dark:bg-gray-700 dark:divide-gray-600 ${isMenuOpen ? "block" : "hidden"
-                  }`}
-                id="dropdown-user"
-              >
-                <div className="px-4  border-gray-200 border-b border-solid" role="none">
-                  <p className="text-sm text-gray-900 dark:text-white" role="none">
-                    Neil Sims
-                  </p>
-                </div>
-                <ul className="py-1 flex items-center flex-col pt-3" role="none">
-                  <li>
-                    <Button
-                      type="button"
-                      color="primary"
-                      variant="ghost"
-                      size="sm"
-                      endContent={<IconLogin2 />}
-                      // className={buttonStyleConfig}
-                      onClick={() => {
-                        localStorage.removeItem("token")
-                        setIsAuthenticated(false)
-                      }}
-                    >
-                      Cerrar Sesion
-                    </Button>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+          <Dropdown>
+            <DropdownTrigger>
+
+              <Avatar showFallback name='Jane' src='https://images.unsplash.com/broken' className="cursor-pointer" />
+            </DropdownTrigger>
+            <DropdownMenu aria-label="Static Actions " disabledKeys={["name"]}>
+              <DropdownItem key="name" > Neil Sims
+
+                <Divider className="my-4" />
+              </DropdownItem>
+              <DropdownItem
+                color="primary"
+                variant="faded"
+                onClick={() => {
+                  localStorage.removeItem("token")
+                  setIsAuthenticated(false)
+                }} key="copy">Cerrar Sesión</DropdownItem>
+
+            </DropdownMenu>
+          </Dropdown>
+
         </div>
-      </div>
-    </nav>
+      </div >
+    </nav >
   );
 };
 

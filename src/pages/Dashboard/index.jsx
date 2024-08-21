@@ -11,7 +11,7 @@ const Dashboard = ({ children }) => {
       <div className="flex flex-col min-h-screen">
         <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         <main className="flex-grow mt-14 p-4">
-          <div className="justify-center sm:flex hidden">
+          <div className="  ">
             {children}
           </div>
         </main>

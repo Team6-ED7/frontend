@@ -1,3 +1,5 @@
+import { coordsColors } from "./constants";
+
 export const coordsFloorOne = [
   {
     "id": "PDT-1",
@@ -5,7 +7,7 @@ export const coordsFloorOne = [
     "shape": "rect",
     "name": "PDT-1",
     //hover
-    "fillColor": "#eab54d4d",
+    "fillColor": coordsColors.fillColor,
     //borde
     "strokeColor": "",
     "coords": [170, 294, 210, 343],
@@ -21,7 +23,7 @@ export const coordsFloorOne = [
     "title": "PDT-2",
     "shape": "rect",
     "name": "PDT-2",
-    "fillColor": "#eab54d4d",
+    "fillColor": coordsColors.fillColor,
     "strokeColor": "",
     "coords": [219, 293, 258, 343],
     "polygon": [
@@ -29,7 +31,7 @@ export const coordsFloorOne = [
     ],
     "preFillColor": "rgba(129, 199, 132, 0.2)",
 
-    "disabled": true
+    // "disabled": true
 
   },
   {
@@ -37,7 +39,7 @@ export const coordsFloorOne = [
     "title": "PDT-3",
     "shape": "rect",
     "name": "PDT-3",
-    "fillColor": "#eab54d4d",
+    "fillColor": coordsColors.fillColor,
     "strokeColor": "",
     "coords": [289, 296, 325, 343],
     "polygon": [
@@ -50,7 +52,7 @@ export const coordsFloorOne = [
     "title": "PDT-4",
     "shape": "rect",
     "name": "PDT-4",
-    "fillColor": "#eab54d4d",
+    "fillColor": coordsColors.fillColor,
     "strokeColor": "",
     "coords": [335, 296, 371, 343],
     "polygon": [
@@ -63,7 +65,7 @@ export const coordsFloorOne = [
     "title": "PDT-5",
     "shape": "rect",
     "name": "PDT-5",
-    "fillColor": "#eab54d4d",
+    "fillColor": coordsColors.fillColor,
     "strokeColor": "",
     "coords": [169, 357, 210, 400],
     "polygon": [
@@ -76,7 +78,7 @@ export const coordsFloorOne = [
     "title": "PDT-6",
     "shape": "rect",
     "name": "PDT-6",
-    "fillColor": "#eab54d4d",
+    "fillColor": coordsColors.fillColor,
     "strokeColor": "",
     "coords": [221, 355, 262, 400],
     "polygon": [
@@ -89,7 +91,7 @@ export const coordsFloorOne = [
     "title": "PDT-7",
     "shape": "rect",
     "name": "PDT-7",
-    "fillColor": "#eab54d4d",
+    "fillColor": coordsColors.fillColor,
     "strokeColor": "",
     "coords": [286, 357, 324, 400],
     "polygon": [
@@ -102,7 +104,7 @@ export const coordsFloorOne = [
     "title": "PDT-8",
     "shape": "rect",
     "name": "PDT-8",
-    "fillColor": "#eab54d4d",
+    "fillColor": coordsColors.fillColor,
     "strokeColor": "",
     "coords": [337, 356, 373, 401],
     "polygon": [
@@ -115,7 +117,7 @@ export const coordsFloorOne = [
     "title": "PDTOC-1",
     "shape": "rect",
     "name": "PDTOC-1",
-    "fillColor": "#eab54d4d",
+    "fillColor": coordsColors.fillColor,
     "strokeColor": "",
     "coords": [10, 240, 115, 322],
     "polygon": [
@@ -129,7 +131,7 @@ export const coordsFloorOne = [
     "title": "PDTOC-2",
     "shape": "rect",
     "name": "PDTOC-2",
-    "fillColor": "#eab54d4d",
+    "fillColor": coordsColors.fillColor,
     "strokeColor": "",
     "coords": [10, 329, 118, 408],
     "polygon": [
@@ -143,7 +145,7 @@ export const coordsFloorOne = [
     "title": "PDTOC-3",
     "shape": "rect",
     "name": "PDTOC-3",
-    "fillColor": "#eab54d4d",
+    "fillColor": coordsColors.fillColor,
     "strokeColor": "",
     "coords": [10, 493, 119, 414],
     "polygon": [
@@ -157,7 +159,7 @@ export const coordsFloorOne = [
     "title": "SDR-1",
     "shape": "rect",
     "name": "SDR-1",
-    "fillColor": "#eab54d4d",
+    "fillColor": coordsColors.fillColor,
     "strokeColor": "",
     "coords": [12, 18, 242, 192],
     "polygon": [
@@ -171,7 +173,7 @@ export const coordsFloorOne = [
     "title": "OC-1",
     "shape": "rect",
     "name": "OC-1",
-    "fillColor": "#eab54d4d",
+    "fillColor": coordsColors.fillColor,
     "strokeColor": "",
     "coords": [370, 110, 534, 245],
     "polygon": [
@@ -185,7 +187,7 @@ export const coordsFloorOne = [
     "title": "DES-1",
     "shape": "rect",
     "name": "DES-1",
-    "fillColor": "#eab54d4d",
+    "fillColor": coordsColors.fillColor,
     "strokeColor": "",
     "coords": [434, 308, 605, 442],
     "polygon": [
