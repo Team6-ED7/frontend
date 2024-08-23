@@ -1,69 +1,51 @@
 import { Link } from "react-router-dom";
+import LogoLandscape from "../../common/LogoLandscape";
+import { useAuth } from "../../../hooks/useAuth";
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, Divider } from "@nextui-org/react";
 
-const Header = ({ sidebarOpen, setSidebarOpen }) => {
+const HeaderDashboard = ({ sidebarOpen, setSidebarOpen }) => {
+  const { setIsAuthenticated } = useAuth()
 
   return (
-    <header className="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none">
-      <div className="flex items-center gap-2 sm:gap-4 lg:hidden">
-        {/* <!-- Hamburger Toggle BTN --> */}
-        <button
-          aria-controls="sidebar"
-          onClick={(e) => {
-            e.stopPropagation();
-            setSidebarOpen(!sidebarOpen);
-          }}
-          className="z-99999 block rounded-sm border border-stroke bg-white p-1.5 shadow-sm dark:border-strokedark dark:bg-boxdark lg:hidden"
-        >
-          <span className="relative block h-5.5 w-5.5 cursor-pointer">
-            <span className="du-block absolute right-0 h-full w-full">
-              <span
-                className={`relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-black delay-[0] duration-200 ease-in-out dark:bg-white ${!sidebarOpen && '!w-full delay-300'
-                  }`}
-              ></span>
-              <span
-                className={`relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-black delay-150 duration-200 ease-in-out dark:bg-white ${!sidebarOpen && 'delay-400 !w-full'
-                  }`}
-              ></span>
-              <span
-                className={`relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-black delay-200 duration-200 ease-in-out dark:bg-white ${!sidebarOpen && '!w-full delay-500'
-                  }`}
-              ></span>
-            </span>
-            <span className="absolute right-0 h-full w-full rotate-45">
-              <span
-                className={`absolute left-2.5 top-0 block h-full w-0.5 rounded-sm bg-black delay-300 duration-200 ease-in-out dark:bg-white ${!sidebarOpen && '!h-0 !delay-[0]'
-                  }`}
-              ></span>
-              <span
-                className={`delay-400 absolute left-0 top-2.5 block h-0.5 w-full rounded-sm bg-black duration-200 ease-in-out dark:bg-white ${!sidebarOpen && '!h-0 !delay-200'
-                  }`}
-              ></span>
-            </span>
-          </span>
-        </button>
-        {/* <!-- Hamburger Toggle BTN --> */}
+    <nav className="fixed top-0 z-50 w-full    shadow-sm mb-1">
+      <div className="px-3 py-3 lg:px-5 lg:pl-3  ">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center justify-start rtl:justify-end gap-2">
+            <button onClick={() => setSidebarOpen(!sidebarOpen)} data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" className={`inline-flex items-center p-2 text-sm text-gray-500 rounded-lg   hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 ${sidebarOpen ? 'hidden' : 'block'}`}>
+              <span className="sr-only">Open sidebar</span>
+              <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path clipRule="evenodd" fillRule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+              </svg>
+            </button>
+            <Link to="/" >
+              <LogoLandscape size={200} />
+            </Link>
+          </div>
+          <Dropdown>
+            <DropdownTrigger>
 
-        <Link className="block flex-shrink-0 lg:hidden" to="/">
-          <img src={"LogoIcon"} alt="Logo" />
-        </Link>
-      </div>
-      <div className="flex flex-grow items-center justify-between px-4 py-4 shadow-2 md:px-6 2xl:px-11">
+              <Avatar showFallback name={localStorage.getItem("name")} src='https://images.unsplash.com/broken' className="cursor-pointer" />
+            </DropdownTrigger>
+            <DropdownMenu aria-label="Static Actions " disabledKeys={["name"]}>
+              <DropdownItem key="name" > {localStorage.getItem("name")}
 
+                <Divider className="my-4" />
+              </DropdownItem>
+              <DropdownItem
+                color="primary"
+                variant="faded"
+                onClick={() => {
+                  localStorage.removeItem("token")
+                  setIsAuthenticated(false)
+                }} key="copy">Cerrar Sesión</DropdownItem>
 
+            </DropdownMenu>
+          </Dropdown>
 
-
-        {/* <div className="flex items-center gap-3 2xsm:gap-7"> */}
-
-        <span className="hidden text-right lg:block">
-          <span className="block text-sm font-medium text-black dark:text-white uppercase">
-            {localStorage.getItem("user")}
-          </span>
-          {/* <span className="block text-xs">UX Designer</span> */}
-        </span>
-        {/* </div> */}
-      </div>
-    </header>
+        </div>
+      </div >
+    </nav >
   );
 };
 
-export default Header;
+export default HeaderDashboard;

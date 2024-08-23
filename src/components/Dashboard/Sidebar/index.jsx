@@ -1,125 +1,95 @@
-import { useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import Header from '../../common/Header';
-import { Button } from '@nextui-org/react';
-import { buttonStyleConfig } from '../../../util/customStyles';
-import { IconLogin2 } from '@tabler/icons-react';
-
-import { useAuth } from '../../../hooks/useAuth';
+import { BsBoxArrowInLeft } from "react-icons/bs";
+import { useEffect } from 'react';
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const location = useLocation();
   const { pathname } = location;
-  const { setIsAuthenticated } = useAuth()
 
 
-  const trigger = useRef(null);
-  const sidebar = useRef(null)
 
-
-  // close on click outside
   useEffect(() => {
-    const clickHandler = ({ target }) => {
-      if (!sidebar.current || !trigger.current) return;
-      if (
-        !sidebarOpen ||
-        sidebar.current.contains(target) ||
-        trigger.current.contains(target)
-      )
-        return;
-      setSidebarOpen(false);
+    const handleResize = () => {
+      if (window.innerWidth < 1024) {
+        setSidebarOpen(false);
+      }
+      if (window.innerWidth > 1024) {
+        setSidebarOpen(true);
+      }
     };
-    document.addEventListener('click', clickHandler);
-    return () => document.removeEventListener('click', clickHandler);
-  });
 
-  // close if the esc key is pressed
-  useEffect(() => {
-    const keyHandler = ({ keyCode }) => {
-      if (!sidebarOpen || keyCode !== 27) return;
-      setSidebarOpen(false);
+    // Agregar el event listener
+    window.addEventListener('resize', handleResize);
+
+
+    handleResize();
+
+    // Limpiar el event listener al desmontar el componente
+    return () => {
+      window.removeEventListener('resize', handleResize);
     };
-    document.addEventListener('keydown', keyHandler);
-    return () => document.removeEventListener('keydown', keyHandler);
-  });
-
-
-
+  }, [setSidebarOpen])
   return (
-    <aside
-      ref={sidebar}
-      className={`absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-gray-50 duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
-    >
+    <aside id="logo-sidebar" className={`fixed top-0 left-0 z-40 w-64 h-screen pt-[70px] transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700 ${sidebarOpen ? 'md:translate-x-0 translate-x-0' : 'md:-translate-x-full '}`} aria-label="Sidebar">
+      <div className="h-full px-3 p-2 overflow-y-auto bg-gray-100/70 dark:bg-gray-800">
+        <nav className="    flex flex-col justify-between h-full ">
+          <div  >
+            <div className='flex   justify-between'>
 
-      <div className="flex items-center justify-between gap-2  py-5.5  ">
-        <Header />
+              <h3 className="  ml-4 text-sm font-semibold text-bodydark2">
+                Admistra tu espacio
+              </h3>
+              <button className='p-0'>
+
+                <BsBoxArrowInLeft onClick={() => setSidebarOpen(prev => !prev)} />
+              </button>
+            </div>
+
+            <ul className=" flex flex-col gap-1.5 mt-2">
+              {/* <!-- Menu Item Chart --> */}
+              <li>
+                <NavLink
+                  to="/my-space"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('my-space') && 'bg-gray-300 dark:bg-meta-4'
+                    }`}
+                >
+                  <svg width="18"
+                    height="19" viewBox="0 0 1024 1024" className="icon" version="1.1" >
+                    <path d="M827.862479 76.120754c-8.12453 0-16.451789 1.485658-24.662325 4.679156L531.771226 186.353272c-26.082455 10.142608-43.262227 35.258515-43.262227 63.243349v93.819636L222.307006 223.62577c-9.202681-4.141616-18.654167-6.055258-27.864016-6.055258-35.73155-0.004096-67.83957 28.783464-67.83957 67.935815v664.101237h452.381206v-90.476651h316.667253V144.041211c0-38.917881-31.896076-67.920457-67.7894-67.920457zM533.747324 859.130913v45.238326H171.84277V285.506327c0-3.391108 0.742317-6.435119 1.938215-9.154558 0.058361-0.132081 0.091126-0.295903 0.151535-0.424913 1.215352-2.617051 2.928312-4.861408 4.928984-6.745356 1.335146-1.253236 2.951861-2.060057 4.51431-2.961077 0.954261-0.546755 1.784632-1.334123 2.795207-1.739581 2.60374-1.047435 5.366183-1.627978 8.136817-1.645384 0.044027 0 0.090102-0.026621 0.134128-0.026621 2.497256 0.001024 4.97813 0.774057 7.441599 1.656647 0.615355 0.221159 1.24914 0.139248 1.859376 0.414673l166.810373 75.065129 99.39162 44.726383 24.104308 10.847041 26.359928 11.861711a22.652439 22.652439 0 0 1 13.33713 20.627194v431.123298z m316.66623-45.238325H578.98565V428.006591c0-26.702929-15.659302-50.922937-40.011391-61.880557l-5.226935-2.352889V249.597645c0-9.399267 5.660038-17.674308 14.421425-21.080775l271.428928-105.556434c2.733774-1.062793 5.51567-1.601357 8.265826-1.601356 10.846017 0 22.551074 8.672309 22.551075 22.682131v669.851377z" fill="#22C67F" />
+                    <path d="M319.821844 399.728926h86.328891v86.328892h-86.328891zM319.821844 561.594957h86.328891v86.328892h-86.328891zM309.031117 712.669237h107.910346V885.325995H309.031117zM751.464252 281.027853h86.328891v86.328891h-86.328891zM751.464252 442.89286h86.328891v86.328891h-86.328891zM578.807494 626.34137h107.910346v172.656758H578.807494z" fill="#74E8AE" />
+                  </svg>
+                  Mis reservas
+                </NavLink>
+              </li>
+              {/* <li>
+                <NavLink
+                  to="/floor-two"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('floor-two') && 'bg-gray-300 dark:bg-meta-4'
+                    }`}
+                >
+                  <svg width="18"
+                    height="19" viewBox="0 0 1024 1024" className="icon" version="1.1" ><path d="M658.461676 324.594173V95.397443h-270.868862v41.672133h229.19673V512.118771h-83.344266v41.672132h208.360664v-41.672132h-83.344266v-145.852465h229.19673v520.901659h-229.19673v-187.524597h-41.672132v187.524597h-479.229527v-333.377062h145.852465v-41.672132h-145.852465v-375.049195h145.852465v-41.672133h-187.524597v833.442655h833.442654v-604.245925z" fill="#22C67F" /><path d="M825.150207 407.938439v416.721327h-166.688531v62.508199H887.658406v-479.229526zM554.281344 824.659766h-416.721327v62.508199h479.229527v-145.852464h-62.5082zM554.281344 178.741709h62.5082v333.377062h-62.5082z" fill="#74E8AE" /></svg>
+                  Piso 2
+                </NavLink>
+              </li> */}
+              <li>
+                <NavLink
+                  to="/floor-one"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('floor-one') && 'bg-gray-300 dark:bg-meta-4'
+                    }`}
+                >
+                  <svg width="18"
+                    height="19" viewBox="0 0 1024 1024" className="icon" version="1.1" ><path d="M658.461676 324.594173V95.397443h-270.868862v41.672133h229.19673V512.118771h-83.344266v41.672132h208.360664v-41.672132h-83.344266v-145.852465h229.19673v520.901659h-229.19673v-187.524597h-41.672132v187.524597h-479.229527v-333.377062h145.852465v-41.672132h-145.852465v-375.049195h145.852465v-41.672133h-187.524597v833.442655h833.442654v-604.245925z" fill="#22C67F" /><path d="M825.150207 407.938439v416.721327h-166.688531v62.508199H887.658406v-479.229526zM554.281344 824.659766h-416.721327v62.508199h479.229527v-145.852464h-62.5082zM554.281344 178.741709h62.5082v333.377062h-62.5082z" fill="#74E8AE" /></svg>
+                  Piso 1 (Planta baja)
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+
+
+        </nav>
+
       </div>
-      <nav className="mt-5 py-4 px-4 lg:mt-9 lg:px-6">
-        <h3 className="mb-4 ml-4 text-sm font-semibold text-bodydark2">
-          Menu
-        </h3>
-
-        <ul className="mb-6 flex flex-col gap-1.5">
-          {/* <!-- Menu Item Chart --> */}
-          <li>
-            <NavLink
-              to="/home"
-              className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('chart') && 'bg-graydark dark:bg-meta-4'
-                }`}
-            >
-              <svg
-                className="fill-current"
-                width="18"
-                height="19"
-                viewBox="0 0 18 19"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g clipPath="url(#clip0_130_9801)">
-                  <path
-                    d="M10.8563 0.55835C10.5188 0.55835 10.2095 0.8396 10.2095 1.20522V6.83022C10.2095 7.16773 10.4907 7.4771 10.8563 7.4771H16.8751C17.0438 7.4771 17.2126 7.39272 17.3251 7.28022C17.4376 7.1396 17.4938 6.97085 17.4938 6.8021C17.2688 3.28647 14.3438 0.55835 10.8563 0.55835ZM11.4751 6.15522V1.8521C13.8095 2.13335 15.6938 3.8771 16.1438 6.18335H11.4751V6.15522Z"
-                    fill=""
-                  />
-                  <path
-                    d="M15.3845 8.7427H9.1126V2.69582C9.1126 2.35832 8.83135 2.07707 8.49385 2.07707C8.40947 2.07707 8.3251 2.07707 8.24072 2.07707C3.96572 2.04895 0.506348 5.53645 0.506348 9.81145C0.506348 14.0864 3.99385 17.5739 8.26885 17.5739C12.5438 17.5739 16.0313 14.0864 16.0313 9.81145C16.0313 9.6427 16.0313 9.47395 16.0032 9.33332C16.0032 8.99582 15.722 8.7427 15.3845 8.7427ZM8.26885 16.3083C4.66885 16.3083 1.77197 13.4114 1.77197 9.81145C1.77197 6.3802 4.47197 3.53957 7.8751 3.3427V9.36145C7.8751 9.69895 8.15635 10.0083 8.52197 10.0083H14.7938C14.6813 13.4958 11.7845 16.3083 8.26885 16.3083Z"
-                    fill=""
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_130_9801">
-                    <rect
-                      width="18"
-                      height="18"
-                      fill="white"
-                      transform="translate(0 0.052124)"
-                    />
-                  </clipPath>
-                </defs>
-              </svg>
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <Button
-              type="button"
-              color="primary"
-              variant="solid"
-              size="lg"
-              endContent={<IconLogin2 />}
-              className={buttonStyleConfig}
-              onClick={() => {
-                localStorage.removeItem("token")
-                setIsAuthenticated(false)
-              }}
-            >
-              Cerrar Sesion
-            </Button>
-
-          </li>
-        </ul>
-
-      </nav>
     </aside>
   );
 };

@@ -1,25 +1,26 @@
 import { useState } from "react";
 import Sidebar from "../../components/Dashboard/Sidebar";
-import Header from "../../components/Dashboard/Header";
+import HeaderDashboard from "../../components/Dashboard/Header";
+import Footer from "../../components/common/Footer";
 const Dashboard = ({ children }) => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   return (
-
-    <div>
-      <div className="flex h-screen  ">
+    <>
+      <HeaderDashboard sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+      <div className="flex flex-col min-h-screen">
         <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-        <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
-          <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-          <main>
-            <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
-              {children}
-            </div>
-          </main>
-
-        </div>
+        <main className="flex-grow mt-14 p-4">
+          <div className="  ">
+            {children}
+          </div>
+        </main>
+        <footer className="z-10">
+          <Footer />
+        </footer>
       </div>
-    </div>
+    </>
+
   )
 }
 

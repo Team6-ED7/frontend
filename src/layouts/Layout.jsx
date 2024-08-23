@@ -8,7 +8,7 @@ const Layout = () => {
 
   return (
     isAuthenticated ?
-      <Navigate to="/home" replace /> :
+      <Navigate to="/my-space" replace /> :
       <div className="h-screen grid grid-rows-[auto_1fr_auto]">
         <Header />
         <Outlet />

@@ -33,7 +33,7 @@ const Register = () => {
     lastname: '',
     email: '',
     repeatEmail: '',
-    password: '',
+    hashedPassword: '',
     repeatPassword: '',
   });
 
@@ -52,7 +52,7 @@ const Register = () => {
         name: state.name,
         lastName: state.lastname,
         email: state.email,
-        password: state.password,
+        hashedPassword: state.hashedPassword,
       });
 
       if (data) {
@@ -117,12 +117,12 @@ const Register = () => {
               onChange={handleChange}
             />
             <Input
-              type="password"
+              type="hashedPassword"
               label="Contraseña"
               placeholder="Como mínimo 8 caracteres..."
               classNames={inputStyleConfig}
               isRequired
-              name="password"
+              name="hashedPassword"
               autoComplete="off"
               onChange={handleChange}
             />
@@ -158,9 +158,8 @@ const Register = () => {
               variant="solid"
               size="lg"
               endContent={<LoginIcon />}
-              className={`${buttonStyleConfig} ${
-                !isChecked ? ' opacity-50 pointer-events-none' : ''
-              }`}
+              className={`${buttonStyleConfig} ${!isChecked ? ' opacity-50 pointer-events-none' : ''
+                }`}
               disabled={!isChecked || isErrorValidEmail}
             >
               Regístrate
