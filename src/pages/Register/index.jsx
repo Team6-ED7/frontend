@@ -72,8 +72,8 @@ const Register = () => {
     <SessionLayout>
       <SessionHeader title="Regístrate" />
       <main>
-        <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-          <div className="flex justify-between w-full gap-5">
+        <form className="flex flex-col gap-5 items-center" onSubmit={handleSubmit}>
+          <div className="flex justify-between gap-5 items-center">
             <Input
               type="text"
               label="Nombre"
@@ -151,7 +151,7 @@ const Register = () => {
               personales<span className="text-secondary">*</span>
             </Checkbox>
           </div>
-          <div className=" flex justify-center">
+          <div className=" flex justify-center items-center">
             <Button
               type="submit"
               color="primary"
