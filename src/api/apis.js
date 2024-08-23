@@ -7,6 +7,9 @@ export const apis = {
   },
   spaces: {
     spacesByFloor: `${BASE_URL}/spaces/floor/`,
+  },
+  reservations: {
+    reservations: `${BASE_URL}/reservations`,
   }
 
 }

@@ -4,9 +4,8 @@ import { coordsFloorOne } from '../coords';
 
 import urlImageFloorOne from '../../../assets/floorone.webp';
 import floorOneMobile from '../../../assets/floorOneMobile.webp';
-import { Button, useDisclosure } from '@nextui-org/react';
+import { useDisclosure } from '@nextui-org/react';
 import ModalSelectSpace from './Modals/ModalSelectSpace';
-import { DatePicker } from "@nextui-org/react";
 import { getLocalTimeZone, today } from "@internationalized/date";
 import axios from 'axios';
 import { apis } from '../../../api/apis';
@@ -21,16 +20,18 @@ export const FloorOne = () => {
   const [date, setDate] = useState(today(getLocalTimeZone()));
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [dataFloor, setDataFloor] = useState([])
+  const [error, setError] = useState(false)
+  const [getReservations, setGetReservations] = useState(false)
   useEffect(() => {
     axios.get(apis.spaces.spacesByFloor + '1').then(({ data }) => {
       setDataFloor(data)
 
     }).catch(err => {
       console.log(err)
-    }).finally(() => {
+      setError(true)
     })
 
-  }, [])
+  }, [getReservations])
 
 
   const merge = (dataGet) => {
@@ -41,6 +42,7 @@ export const FloorOne = () => {
             ...data,
             "disabled": area.available ? false : true,
             "preFillColor": area.available ? coordsColors.avaliable : coordsColors.notAvaliable,
+            "typeSpace": area.typeSpace
           }
         } else return null
 
@@ -65,26 +67,14 @@ export const FloorOne = () => {
 
   return (
     <div className=' flex  justify-center '>
-      {
+      {error ? <div className='text-red-500 p-4'> <h1>Error al cargar la informacion</h1></div> :
         loading ? <div>Cargando</div> :
-          <>
+          <div className=''>
             <div className='sm:flex  hidden  flex-col  gap-2 justify-center '>
-              <div className='pt-4 flex  items-end gap-1 self-end'>
-                <DatePicker
-                  minValue={today(getLocalTimeZone())}
-                  label="Seleccione una fecha" value={date} onChange={setDate}
-                  variant='faded'
-                  isRequired
-                  labelPlacement='outside'
-                  color="default"
-                  className="max-w-[284px]"
-                />
-                <Button color='primary' size='md'>
-                  Consultar
-                </Button>
-              </div>
+
               <div className='p-1 border border-gray-400/35 rounded-sm border-solid'>
                 <ImageMapper
+
                   ref={ref}
                   src={urlImageFloorOne}
                   map={{ name: 'Floor One', areas }}
@@ -99,7 +89,6 @@ export const FloorOne = () => {
               </div>
             </div>
             <div className='sm:hidden flex '>
-
               <Image
                 isBlurred
                 width={240}
@@ -113,9 +102,9 @@ export const FloorOne = () => {
                 <li>3</li>
               </ul>
             </div>
-          </>
+          </div>
       }
-      {isOpen && <ModalSelectSpace isOpen={isOpen} onOpenChange={onOpenChange} onOpen={onOpen} areaSelected={areaSelected} />}
+      {isOpen && <ModalSelectSpace isOpen={isOpen} onOpenChange={onOpenChange} onOpen={onOpen} areaSelected={areaSelected} date={date} setGetReservations={setGetReservations} />}
     </div>
   )
 }

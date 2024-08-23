@@ -61,7 +61,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                   Mis reservas
                 </NavLink>
               </li>
-              <li>
+              {/* <li>
                 <NavLink
                   to="/floor-two"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('floor-two') && 'bg-gray-300 dark:bg-meta-4'
@@ -71,7 +71,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                     height="19" viewBox="0 0 1024 1024" className="icon" version="1.1" ><path d="M658.461676 324.594173V95.397443h-270.868862v41.672133h229.19673V512.118771h-83.344266v41.672132h208.360664v-41.672132h-83.344266v-145.852465h229.19673v520.901659h-229.19673v-187.524597h-41.672132v187.524597h-479.229527v-333.377062h145.852465v-41.672132h-145.852465v-375.049195h145.852465v-41.672133h-187.524597v833.442655h833.442654v-604.245925z" fill="#22C67F" /><path d="M825.150207 407.938439v416.721327h-166.688531v62.508199H887.658406v-479.229526zM554.281344 824.659766h-416.721327v62.508199h479.229527v-145.852464h-62.5082zM554.281344 178.741709h62.5082v333.377062h-62.5082z" fill="#74E8AE" /></svg>
                   Piso 2
                 </NavLink>
-              </li>
+              </li> */}
               <li>
                 <NavLink
                   to="/floor-one"

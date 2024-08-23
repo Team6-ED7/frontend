@@ -24,10 +24,10 @@ const HeaderDashboard = ({ sidebarOpen, setSidebarOpen }) => {
           <Dropdown>
             <DropdownTrigger>
 
-              <Avatar showFallback name='Jane' src='https://images.unsplash.com/broken' className="cursor-pointer" />
+              <Avatar showFallback name={localStorage.getItem("name")} src='https://images.unsplash.com/broken' className="cursor-pointer" />
             </DropdownTrigger>
             <DropdownMenu aria-label="Static Actions " disabledKeys={["name"]}>
-              <DropdownItem key="name" > Neil Sims
+              <DropdownItem key="name" > {localStorage.getItem("name")}
 
                 <Divider className="my-4" />
               </DropdownItem>

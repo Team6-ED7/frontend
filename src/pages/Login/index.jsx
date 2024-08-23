@@ -19,7 +19,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [state, setState] = useState({
     email: '',
-    password: '',
+    hashedPassword: '',
   })
 
   const handleChange = (e) => {
@@ -48,9 +48,16 @@ const Login = () => {
       const { data } = await axios.post(apis.auth.login, state);
 
       if (data) {
-        toast.success(`Bienvenido`)
+        toast.success(`Bienvenido`, {
+          className: "content",
+          duration: 3000,
+        })
         setIsAuthenticated(true)
-        localStorage.setItem("token", data);
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("name", data.email);
+        // localStorage.setItem("userId", state.email);
+
+
         navigate("/floor-one")
       }
     } catch (error) {
@@ -88,7 +95,7 @@ const Login = () => {
               classNames={inputStyleConfig}
               isRequired
               onChange={handleChange}
-              name="password"
+              name="hashedPassword"
               endContent={showPassword
                 ?
                 <IconEyeOff className='cursor-pointer' onClick={() => setShowPassword(!showPassword)} />
@@ -105,13 +112,13 @@ const Login = () => {
                 ¿Olvidaste tu contraseña?
               </Link>
               <Button
-                disabled={!state.email || !state.password || isError}
+                disabled={!state.email || !state.hashedPassword || isError}
                 type="submit"
                 color="primary"
                 variant="solid"
                 size="lg"
                 endContent={<LoginIcon />}
-                className={`${buttonStyleConfig} ${!state.email || !state.password ? 'opacity-50 pointer-events-none' : ''}`}
+                className={`${buttonStyleConfig} ${!state.email || !state.hashedPassword ? 'opacity-50 pointer-events-none' : ''}`}
               >
                 Iniciar Sesión
               </Button>
