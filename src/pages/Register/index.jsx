@@ -55,10 +55,9 @@ const Register = () => {
         hashedPassword: state.hashedPassword,
       });
 
-      if (data) {
-        toast.success('Usuario creado con éxito' + ' ' + data.name);
-        navigate('/login');
-      }
+
+      toast.success('Usuario creado con éxito');
+      navigate('/login');
     } catch (error) {
       if (error.response.data) {
         toast.error(error.response.data.message);
@@ -117,7 +116,7 @@ const Register = () => {
               onChange={handleChange}
             />
             <Input
-              type="hashedPassword"
+              type="password"
               label="Contraseña"
               placeholder="Como mínimo 8 caracteres..."
               classNames={inputStyleConfig}
