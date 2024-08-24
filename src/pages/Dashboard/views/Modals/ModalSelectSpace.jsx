@@ -15,9 +15,9 @@ export default function ModalSelectSpace({ isOpen, onOpenChange, areaSelected, d
     try {
       const { data } = await axios.post(apis.reservations.reservations, {
 
-        userEmail: "example@mail.com",
+        userEmail: localStorage.getItem('name'),
         spaceName: areaSelected.name,
-        startDate: `${date.year}-0${date.month}-${date.day}`,
+        startDate: `${date.year}-0${date.month}-${date.day + 1}`,
         status: true
 
       }

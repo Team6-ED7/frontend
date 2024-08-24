@@ -43,19 +43,20 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if (!state.email || !state.hashedPassword || isError) return
     try {
       const { data } = await axios.post(apis.auth.login, state);
 
       if (data) {
         toast.success(`Bienvenido`, {
           className: "content",
-          duration: 3000,
+          duration: 2000,
         })
+
+
         setIsAuthenticated(true)
         localStorage.setItem("token", data.token);
         localStorage.setItem("name", data.email);
-        // localStorage.setItem("userId", state.email);
 
 
         navigate("/floor-one")
@@ -112,13 +113,12 @@ const Login = () => {
                 ¿Olvidaste tu contraseña?
               </Link>
               <Button
-                disabled={!state.email || !state.hashedPassword || isError}
                 type="submit"
                 color="primary"
                 variant="solid"
                 size="lg"
                 endContent={<LoginIcon />}
-                className={`${buttonStyleConfig} ${!state.email || !state.hashedPassword ? 'opacity-50 pointer-events-none' : ''}`}
+                className={`${buttonStyleConfig}  }`}
               >
                 Iniciar Sesión
               </Button>

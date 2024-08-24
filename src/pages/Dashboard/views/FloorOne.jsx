@@ -36,7 +36,7 @@ export const FloorOne = () => {
 
   const merge = (dataGet) => {
     const dataAvaliableFloor = dataGet.map((area) => {
-      const f = coordsFloorOne.map(data => {
+      const filter = coordsFloorOne.map(data => {
         if (data.id === area.name) {
           return {
             ...data,
@@ -49,7 +49,7 @@ export const FloorOne = () => {
 
       }).filter(data => data !== null)
 
-      return f
+      return filter
     }).flat()
     return dataAvaliableFloor
 
@@ -57,8 +57,8 @@ export const FloorOne = () => {
 
   useEffect(() => {
     if (dataFloor?.length > 0) {
-      const up = merge(dataFloor)
-      setAreas(up)
+      const update = merge(dataFloor)
+      setAreas(update)
       setLoading(false)
     }
 
